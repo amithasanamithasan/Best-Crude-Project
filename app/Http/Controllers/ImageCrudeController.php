@@ -8,7 +8,10 @@ use Session;
 class ImageCrudeController extends Controller
 {
    public function all_products(){
-     return view ('products');
+     $products= ImageCrud::all();
+    //  return $products;
+    
+     return view ('products',compact('products'));
    }
 
    public function add_new_products ()

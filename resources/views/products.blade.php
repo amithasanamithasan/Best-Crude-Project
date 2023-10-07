@@ -236,6 +236,12 @@ table.table .avatar {
 .modal form label {
 	font-weight: normal;
 }	
+img {
+  border-radius: 70%;
+  
+}
+
+
 </style>
  <script>
 $(document).ready(function(){
@@ -300,23 +306,26 @@ $(document).ready(function(){
 					   </tr>
 				      </thead>
 				      <tbody>
-					    <tr>
-						<td> <span class="custom-checkbox">
-<input type="checkbox" id="checkbox1" name="options[]" value="1">
-<label for="checkbox1"></label> 
-							</span> 
-                        </td>
-    <td>1</td>
-	<td>Thomas Hardy</td>
-	<td>thomashardy@mail.com</td>
-	<td>89 Chiaroscuro Rd, Portland, USA</td>
-	<td>(171) 555-2222</td>
-    <td>image</td>
-	<td>
-	 <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-	<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> 
-	</td>
-	</tr>
+                        @foreach($products as $key=>$product)
+                        <tr>
+                            <td> <span class="custom-checkbox">
+    <input type="checkbox" id="checkbox1" name="options[]" value="1">
+    <label for="checkbox1"></label> 
+                                </span> 
+                            </td>
+        <td>{{$key+1}}</td>
+        <td>{{$product->name}}</td>
+        <td>{{$product->email}}</td>
+        <td>{{$product->address}}</td>
+        <td>{{$product->number}}</td>
+        <td><img style="width:100px" src="{{asset('image/products/'.$product->image)}}"></td>
+        <td>
+         <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> 
+        </td>
+        </tr>
+         @endforeach
+				
 	</table>
 
 
