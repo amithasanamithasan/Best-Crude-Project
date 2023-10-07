@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/products',[ImageCrudeController::class,'all_products'])->name('all.product');
 Route::get('/add-new-product',[ImageCrudeController::class,'add_new_products'])->name('add.product');
 Route::post('/store-product',[ImageCrudeController::class,'store_product'])->name('store.product');
+Route::get('/edit-product/{id}',[ImageCrudeController::class,'edit_product'])->name('edit.product');
+Route::post('/update-product/{id}',[ImageCrudeController::class,'update_product'])->name('update.product');
