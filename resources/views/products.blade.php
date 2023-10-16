@@ -293,6 +293,10 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div>
+			{{-- delete massage show  from delete button click --}}
+			@if(Session::has ('msg'))
+            <p class="alert alert-success">{{Session::get('msg')}}</p>
+            @endif
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
@@ -336,7 +340,7 @@ $(document).ready(function(){
             </a>
           </p> 
            <p>
-            <a href="#" class="btn btn-danger btn-sm">
+            <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')" href="{{route('delete.product',$product->id)}}">
               <span class="glyphicon glyphicon-trash"></span>DELETE
             </a>
           </p>

@@ -290,10 +290,12 @@
         </ul>
     </div>
 @endif
-
+         {{-- success full massage --}}
             @if(Session::has ('msg'))
             <p class="alert alert-success">{{Session::get('msg')}}</p>
             @endif
+
+
             <form action="{{route('update.product',$product->id)}}" method="POST" enctype="multipart/form-data" >
                 @csrf				
             <div class="form-group mb-3">

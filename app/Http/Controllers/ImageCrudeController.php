@@ -10,7 +10,7 @@ use File;
 class ImageCrudeController extends Controller
 {
    public function all_products(){
-     $products= ImageCrud::all();
+    $products= ImageCrud::all();
     //  return $products;
     
      return view ('products',compact('products'));
@@ -21,9 +21,11 @@ class ImageCrudeController extends Controller
     return view('add-new-product');
 }
 // jaheto product insert krbo ti request calss add krte hobe
-public function store_product(Request $request){
-    // validation er kaj ta kora lagbe 
+
+// validation er kaj ta kora lagbe 
     // validate er moddhe akta array jabe[]
+public function store_product(Request $request){
+    
     $request->validate([
         'name'=>'required',
         'email'=>'required',
@@ -90,7 +92,19 @@ public function update_product (Request $request,$id){
       ]);
       Session::flash ('msg','Product Update sucssfully');
       return redirect()->back();
-}
 
+
+    }
+    public function delete_product($id)
+{
+  $product = ImageCrud::findOrFail($id);
+  $deleteOldImage= 'image/products/'.$product->image;
+  if (file_exists($deleteOldImage)){
+    File::delete($deleteOldImage);
+  }
+  $product->delete();
+  Session::flash ('msg','Product Deleted sucssfully');
+  return redirect()->back();
+}
 }
 
