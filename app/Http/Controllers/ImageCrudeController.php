@@ -103,8 +103,9 @@ public function update_product (Request $request,$id){
     File::delete($deleteOldImage);
   }
   $product->delete();
-  Session::flash ('msg','Product Deleted sucssfully');
-  return redirect()->back();
-}
+  // Session::flash ('msg','Product Deleted sucssfully');
+  // return redirect()->back();
+  return back()->with("image-delete","Image Delete Successfully");
 }
 
+}

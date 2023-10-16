@@ -15,6 +15,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{{-- sweet aleart masage css cdn link --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css" integrity="sha512-hwwdtOTYkQwW2sedIsbuP1h0mWeJe/hFOfsvNKpRB3CkRxq8EW7QMheec1Sgd8prYxGm1OM9OZcGW7/GUud5Fw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
  body {
 	color: #566787;
@@ -340,7 +342,8 @@ $(document).ready(function(){
             </a>
           </p> 
            <p>
-            <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')" href="{{route('delete.product',$product->id)}}">
+			{{-- onclick="return confirm('Are you sure to delete?')" --}}
+            <a class="btn btn-danger btn-sm"  href="{{route('delete.product',$product->id)}}">
               <span class="glyphicon glyphicon-trash"></span>DELETE
             </a>
           </p>
@@ -370,9 +373,17 @@ $(document).ready(function(){
 		</div>
 	</div>        
 </div>
-<!-- Edit Modal HTML -->
-
-<!-- Delete Modal HTML -->
-
+<!-- Jquery minified version cdn link -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- Delete sweete alarte massage cdn link ajax /boostrap-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js" integrity="sha512-MqEDqB7me8klOYxXXQlB4LaNf9V9S0+sG1i8LtPOYmHqICuEZ9ZLbyV3qIfADg2UJcLyCm4fawNiFvnYbcBJ1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@if (Session:: has ('image-delete'))
+<script>
+	swal("Congratulation","{!!Session::get('image-delete') !!}","success",{
+		button:"ok"
+	});
+	
+</script>
+	@endif
 </body>
 </html>
